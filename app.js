@@ -7,11 +7,14 @@ dotenv.config()
 const app = express();
 const authRouter = require('./routes/auth.js');
 const userRouter = require('./routes/user.js');
+const servicesRouter = require('./routes/services.js');
+const subServicesRouter = require('./routes/subServices.js');
 const connectDB = require('./db/config.js');
 const authMiddleware = require('./middlewares/auth.js');
 const isAdmin = require('./middlewares/isAdmin.js');
 const notFound = require('./middlewares/notFound.js');
 const errorHandler = require('./middlewares/errorHandler.js');
+const subService = require('./models/subService.js');
 
 
 // Define a port for the app to listen on
@@ -20,12 +23,25 @@ const port = process.env.PORT;
 app.use(express.json())
 
 // Define a basic route that responds with "Hello, World!"
+
+
+// Set the view engine to ejs
+app.set('view engine', 'ejs');
+// Set the path to the views folder
+app.set('views', __dirname + '/views');
+// Set the path to the public folder
+app.use(express.static('public'));
+
+
 app.get('/', (req, res) => {
-  res.send('Hello, World!');
+  res.render('index.ejs');
 });
+
 
 app.use('/api/auth', authRouter);
 app.use('/api/user',authMiddleware,userRouter);
+app.use('/api/services',isAdmin,servicesRouter);
+app.use('/api/subServices',isAdmin,subServicesRouter);
 
 // Not Found Middleware
 app.use(notFound);

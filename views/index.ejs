@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Landing Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .hero-section {
+            background-color: #f8f9fa;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            padding: 0.75rem 2rem;
+            font-size: 1.25rem;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 50px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .features-section, .about-section, .services-section, .reports-section, .testimonials-section, .contact-section {
+            padding: 4rem 0;
+        }
+
+        .feature-box, .about-item, .service-box, .report-box, .testimonial-box, .contact-box {
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-box:hover, .service-box:hover, .report-box:hover, .testimonial-box:hover, .contact-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon {
+            font-size: 3rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .about-section, .services-section, .reports-section, .testimonials-section, .contact-section {
+            background-color: #f1f1f1;
+        }
+
+        .about-grid, .services-grid, .reports-grid, .testimonial-grid, .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-item h3, .service-box h3, .report-box h3, .testimonial-box h3, .contact-box h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-item p, .service-box p, .report-box p, .testimonial-box p, .contact-box p {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+
+        .footer {
+            padding: 2rem 0;
+            background-color: #343a40;
+            color: white;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .spacer {
+            margin-top: 3rem;
+        }
+
+        .testimonial-box {
+            text-align: center;
+        }
+
+        .testimonial-box p {
+            font-style: italic;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 100%;
+        }
+
+        .contact-btn {
+            padding: 0.75rem 2rem;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 50px;
+            transition: background-color 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Unlock Your Potential</h1>
+            <p>Empowering individuals and businesses to achieve greatness through innovation and technology.</p>
+            <a href="#features" class="cta-btn">Explore Features</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-bolt icon"></i>
+                        <h3>Lightning Fast</h3>
+                        <p>Our solutions are optimized for speed, ensuring a seamless experience for your users.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-cogs icon"></i>
+                        <h3>Highly Customizable</h3>
+                        <p>Our platform is adaptable to your unique business needs, offering full flexibility.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-shield-alt icon"></i>
+                        <h3>Secure & Reliable</h3>
+                        <p>Security is our top priority, ensuring your data is protected at all times.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>About Us</h2>
+                <p class="about-text">We are a team of passionate individuals committed to providing cutting-edge solutions for businesses around the globe.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-item">
+                    <i class="fas fa-rocket icon"></i>
+                    <h3>Our Mission</h3>
+                    <p>Deliver innovative and sustainable solutions that empower our clients to succeed in the digital age.</p>
+                </div>
+                <div class="about-item">
+                    <i class="fas fa-heart icon"></i>
+                    <h3>Our Values</h3>
+                    <p>Integrity, innovation, and customer focus are at the heart of everything we do.</p>
+                </div>
+                <div class="about-item">
+                    <i class="fas fa-users icon"></i>
+                    <h3>Our Team</h3>
+                    <p>Our team consists of experts in various fields, united by a common goal of providing excellence and quality service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-box">
+                    <i class="fas fa-code icon"></i>
+                    <h3>Web Development</h3>
+                    <p>We create robust, scalable websites and applications to meet the demands of your business.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-mobile-alt icon"></i>
+                    <h3>Mobile Development</h3>
+                    <p>Our mobile solutions offer high performance across devices, ensuring a seamless user experience.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-cloud icon"></i>
+                    <h3>Cloud Solutions</h3>
+                    <p>Cloud-based solutions to optimize operations, ensuring security, flexibility, and scalability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reports Section with Charts -->
+    <section id="reports" class="reports-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Our Reporting Capabilities</h2>
+                <p>We offer comprehensive reports and data visualization to help you understand your business better.</p>
+            </div>
+            <div class="reports-grid">
+                <div class="report-box">
+                    <h3>Sales Performance</h3>
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div class="report-box">
+                    <h3>Revenue Growth</h3>
+                    <canvas id="lineChart"></canvas>
+                </div>
+                <div class="report-box">
+                    <h3>Market Share</h3>
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Testimonials</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-box">
+                    <i class="fas fa-quote-left icon"></i>
+                    <p>"This company transformed our online presence. The speed and quality of their work were phenomenal!"</p>
+                    <h3>- John Doe, CEO of TechCorp</h3>
+                </div>
+                <div class="testimonial-box">
+                    <i class="fas fa-quote-left icon"></i>
+                    <p>"A true partner in digital innovation. They delivered on time and exceeded expectations."</p>
+                    <h3>- Jane Smith, COO of FinPro</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or want to start a project, don't hesitate to reach out!</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-box">
+                    <h3>Email Us</h3>
+                    <form class="contact-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="contact-btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-box">
+                    <h3>Visit Our Office</h3>
+                    <p>123 Innovation Street, Tech City, TX 75001</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Bar Chart
+        const ctxBar = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Sales (in USD)',
+                    data: [12000, 19000, 3000, 5000, 20000],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // Line Chart
+        const ctxLine = document.getElementById('lineChart').getContext('2d');
+        const lineChart = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Revenue Growth',
+                    data: [10000, 15000, 25000, 35000, 45000],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false
+                }]
+            }
+        });
+
+        // Pie Chart
+        const ctxPie = document.getElementById('pieChart').getContext('2d');
+        const pieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['Product A', 'Product B', 'Product C'],
+                datasets: [{
+                    data: [30, 50, 20],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ]
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>

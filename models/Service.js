@@ -6,10 +6,6 @@ const serviceSchema = new Schema({
   name: {
     type: String,
     required: true
-  },
-  subLinks: {
-    type: [String],  // Array of strings
-    required: true
   }
 });
 

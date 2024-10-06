@@ -7,6 +7,10 @@ dotenv.config();
 module.exports = function (req, res, next) {
   try {
     // Get the token from the header
+    if(!req.header('authorization')){
+
+      return res.status(401).json({ msg: 'No token available' });
+    }
     const token = req.header('authorization').split(" ")[1];
 
     // Check if token is missing
