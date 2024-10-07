@@ -22,10 +22,7 @@ const userSchema = new Schema({
     enum: ['admin', 'user'],
     default: 'user'
   },
-  services: {
-    type: [serviceSchema],
-    default: []
-  },
+
   changePasswordToken: {
     type: String,  // This will store a random 6-digit code
   }

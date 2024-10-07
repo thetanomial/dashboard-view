@@ -5,9 +5,10 @@ const jwt = require('jsonwebtoken');
 
 // Import the User model
 const User = require('../models/User');
+const isAdmin = require('../middlewares/isAdmin');
 
 // Register route
-router.post('/register', async (req, res) => {
+router.post('/register', isAdmin, async (req, res) => {
   const { name, email, password, role } = req.body;
 
   try {

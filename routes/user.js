@@ -3,7 +3,23 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const isAdmin = require('../middlewares/isAdmin');
+const isAdminOrIsSelf = require('../middlewares/isAdminOrIsSelf');
 const isSelf = require('../middlewares/isSelf');
+
+
+
+router.get('/', isAdminOrIsSelf,async (req, res) => {
+  try {
+    const users = await User.find({role: 'user'}).select('-password'); // Don't return the password
+    if (!users) {
+      return res.status(404).json({ msg: 'No users in the db' });
+    }
+    res.json(users);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
 
 // Get user info by ID (for demonstration)
 router.get('/:id', isSelf,async (req, res) => {

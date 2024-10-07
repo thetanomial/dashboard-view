@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Service = require('../models/Service'); // Adjust the path to your Service model as necessary
+const SubService = require('../models/SubService'); // Adjust the path to your Service model as necessary
 const router = express.Router();
 
 // Create a new service
@@ -24,6 +25,46 @@ router.get('/', async (req, res) => {
     res.status(500).json({ message: 'Error fetching services', error });
   }
 });
+
+// get all subServices and populate parentService
+router.get('/subServicesAndParentServices', async (req, res) => {
+  try {
+    // Fetch subServices and populate parentService
+    const subServices = await SubService.find().populate('parentService');
+
+    // Create a map to group subServices by their parentService name
+    const groupedServices = {};
+
+    subServices.forEach(subService => {
+      const parentName = subService.parentService.name;
+
+      // If the parentService doesn't exist in the map, create an entry for it
+      if (!groupedServices[parentName]) {
+        groupedServices[parentName] = {
+          name: parentName,
+          subServices: []
+        };
+      }
+
+      // Add the subService to the parentService's subServices array
+      groupedServices[parentName].subServices.push({
+        _id: subService._id,
+        name: subService.name,
+        __v: subService.__v
+      });
+    });
+
+    // Convert the grouped object into an array for the final response
+    const result = Object.values(groupedServices);
+
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching subServices', error });
+  }
+});
+
+
+
 
 // Get a service by ID
 router.get('/:id', async (req, res) => {

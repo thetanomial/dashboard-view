@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightbox Video Example</title>
+    <!-- Include Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .video-thumbnail {
+            width: 300px; /* Thumbnail width */
+            cursor: pointer;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        .video-thumbnail:hover {
+            transform: scale(1.05); /* Scale on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Video Lightbox Example</h1>
+    <a href="https://res.cloudinary.com/dbey8zpz1/video/upload/v1728222161/your_folder_name/odbrjq7bgze71g0tmaqz.mp4" data-lightbox="video" data-title="My Video Title">
+        <img src="https://img.youtube.com/vi/odbrjq7bgze71g0tmaqz/maxresdefault.jpg" alt="Video Thumbnail" class="video-thumbnail" />
+    </a>
+
+    <!-- Include Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>

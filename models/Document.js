@@ -1,5 +1,3 @@
-// models/Document.js
-
 const mongoose = require('mongoose');
 
 // Define the Document schema
@@ -35,6 +33,11 @@ const documentSchema = new mongoose.Schema({
     ref: 'User', // Reference to the User model
     required: true, // Assuming the uploader should be required
   },
+  documentType: {
+    type: String,
+    enum: ['image', 'video', 'document'], // Allowed values for documentType
+    required: true, // Making it required
+  }
 }, { timestamps: true }); // Add createdAt and updatedAt timestamps
 
 // Create the Document model

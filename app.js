@@ -9,10 +9,13 @@ const authRouter = require('./routes/auth.js');
 const userRouter = require('./routes/user.js');
 const servicesRouter = require('./routes/services.js');
 const subServicesRouter = require('./routes/subServices.js');
+const userSubscriptionsRouter = require('./routes/userSubscriptions.js');
+const documentRoutes = require('./routes/documentRoutes.js');
 const authMiddleware = require('./middlewares/auth.js');
 const isAdmin = require('./middlewares/isAdmin.js');
 const notFound = require('./middlewares/notFound.js');
 const errorHandler = require('./middlewares/errorHandler.js');
+
 
 // Load environment variables
 dotenv.config();
@@ -87,6 +90,8 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', authMiddleware, userRouter);
 app.use('/api/services', isAdmin, servicesRouter);
 app.use('/api/subServices', isAdmin, subServicesRouter);
+app.use('/api/userSubscriptions', isAdmin, userSubscriptionsRouter);
+app.use('/api/documents', authMiddleware, documentRoutes);
 
 // Not Found Middleware
 app.use(notFound);

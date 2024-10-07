@@ -1,5 +1,5 @@
 const express = require('express');
-const subService = require('../models/subService');
+const subService = require('../models/SubService');
 const router = express.Router();
 
 // Create a new SubService
