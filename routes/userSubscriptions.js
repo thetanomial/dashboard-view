@@ -104,44 +104,47 @@ router.get('/generate_service_tree/:userObjectId', async (req, res) => {
       return res.status(404).json({ message: 'No subscriptions found for this user.' });
     }
 
-    // Transform the response into user -> parentService -> subServices structure
-    const result = subscriptions.map(subscription => {
-      // Group services by parentService
-      const groupedServices = {};
-      
+    // Initialize a result object to hold the user data and grouped services
+    let result = {
+      _id: subscriptions[0].user._id, // Since it's the same user, we can use the first subscription's user data
+      name: subscriptions[0].user.name,
+      email: subscriptions[0].user.email,
+      role: subscriptions[0].user.role,
+      services: {} // Object to store grouped services by parentService
+    };
+
+    // Iterate through each subscription and group services by parentService
+    subscriptions.forEach(subscription => {
       subscription.services.forEach(subService => {
         const parentServiceId = subService.parentService._id;
         const parentServiceName = subService.parentService.name;
 
-        if (!groupedServices[parentServiceId]) {
-          groupedServices[parentServiceId] = {
+        // If the parentService doesn't exist in the result, create a new entry
+        if (!result.services[parentServiceId]) {
+          result.services[parentServiceId] = {
             _id: parentServiceId,
             name: parentServiceName,
             subServices: []
           };
         }
 
-        groupedServices[parentServiceId].subServices.push({
+        // Add the subService to the corresponding parentService
+        result.services[parentServiceId].subServices.push({
           _id: subService._id,
           name: subService.name
         });
       });
-
-      // Return structured user data with services grouped by parentService
-      return {
-        _id: subscription.user._id,
-        name: subscription.user.name,
-        email: subscription.user.email,
-        role: subscription.user.role,
-        services: Object.values(groupedServices)
-      };
     });
+
+    // Convert the services object into an array
+    result.services = Object.values(result.services);
 
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching subscriptions', error });
   }
 });
+
 
 
 // show locked and unlocked services

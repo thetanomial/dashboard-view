@@ -15,6 +15,7 @@ const authMiddleware = require('./middlewares/auth.js');
 const isAdmin = require('./middlewares/isAdmin.js');
 const notFound = require('./middlewares/notFound.js');
 const errorHandler = require('./middlewares/errorHandler.js');
+const socialMediaContentStrategyRouter = require('./routes/social_media/content_strategy.js');
 
 
 // Load environment variables
@@ -89,6 +90,7 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRouter);
 app.use('/api/user', authMiddleware, userRouter);
 app.use('/api/services', isAdmin, servicesRouter);
+app.use('/api/services/social_media', isAdmin, require("./routes/social_media"));
 app.use('/api/subServices', isAdmin, subServicesRouter);
 app.use('/api/userSubscriptions', isAdmin, userSubscriptionsRouter);
 app.use('/api/documents', authMiddleware, documentRoutes);

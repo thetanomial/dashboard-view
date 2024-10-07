@@ -1,8 +1,11 @@
 const express = require('express');
 const multer = require('multer');
+const { Document } = require('../models/Document');
 const cloudinary = require('cloudinary').v2;
-const Document = require('../models/Document'); // Import the Document model
+
 const router = express.Router();
+
+
 
 // Set up Multer storage with memory storage
 const storage = multer.memoryStorage();
