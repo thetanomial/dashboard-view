@@ -15,7 +15,12 @@ const authMiddleware = require('./middlewares/auth.js');
 const isAdmin = require('./middlewares/isAdmin.js');
 const notFound = require('./middlewares/notFound.js');
 const errorHandler = require('./middlewares/errorHandler.js');
-const socialMediaContentStrategyRouter = require('./routes/social_media/content_strategy.js');
+
+const scheduleUpcomingPostsUpdate = require('./utils/cronJobs.js');
+
+
+// Start the cron job
+scheduleUpcomingPostsUpdate();
 
 
 // Load environment variables

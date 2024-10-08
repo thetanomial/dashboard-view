@@ -85,8 +85,20 @@ const postCreationDocumentSchema = new mongoose.Schema({
     type: Date,
     required: true,
     default: Date.now,
+  },
+  isUpcoming: {
+    type: Boolean,
+    default: function() {
+      return this.upload_date > new Date();
+    }
   }
 }, { timestamps: true });
+
+// Pre-save middleware to update isUpcoming field
+postCreationDocumentSchema.pre('save', function(next) {
+  this.isUpcoming = this.upload_date > new Date();
+  next();
+});
 
 // Create the PostCreationDocument model using discriminator
 const PostCreationDocument = Document.discriminator('PostCreationDocument', postCreationDocumentSchema);

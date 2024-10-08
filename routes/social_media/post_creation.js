@@ -42,12 +42,18 @@ const validateUser = async (req, res, next) => {
 // Route to upload multiple images and save PostCreationDocuments to MongoDB
 router.post('/upload', upload.array('images', 10), validateUser, async (req, res) => {
     try {
-        const { created_for, service, subService } = req.body;
+        const { created_for, service, subService,upload_date } = req.body;
+
+        if(!upload_date){
+          return res.status(400).json({
+            message : "upload date is required"
+          })
+        }
 
         // Ensure all required fields are present
-        if (!created_for || !service || !req.files.length) {
+        if (!created_for || !service || !req.files.length ) {
             return res.status(400).json({
-                message: 'Missing required fields: created_for, service, and images are required.'
+                message: 'Missing required fields: created_for, upload_date, service, and images are required.'
             });
         }
 
@@ -98,6 +104,7 @@ router.post('/upload', upload.array('images', 10), validateUser, async (req, res
             fileExtension: fileExtensions[0], // Use the extension of the first file
             fileSize: req.files[0].size, // Size of the first file (you may want to adjust this logic)
             fileUrl: uploadedImageUrls[0], // Assuming you want to set the URL of the first file
+            upload_date: upload_date
         });
 
         // Save the new post document to MongoDB
